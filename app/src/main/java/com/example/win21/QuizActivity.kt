@@ -19,8 +19,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class QuizActivity : AppCompatActivity() {
     private lateinit var ufcViewModel: UfcViewModel
-    val APP_ID = "714b9f14-381d-4fc4-a93c-28d480557381"
-    var questionsList = ArrayList<Ufsquestion>()
+    private val APP_ID = "714b9f14-381d-4fc4-a93c-28d480557381"
+    private lateinit var questionsList: ArrayList<Ufsquestion>
     var questionPosition = 0
     var correctAnswer = 0
     private lateinit var nextButton: AppCompatButton
@@ -30,6 +30,7 @@ class QuizActivity : AppCompatActivity() {
         OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE)
         OneSignal.initWithContext(this)
         OneSignal.setAppId(APP_ID)
+        questionsList = ArrayList()
         nextButton = findViewById(R.id.next_button)
         val constraint = findViewById<ConstraintLayout>(R.id.constraint_layout_quiz)
         LoadImage.upload(constraint, this)
